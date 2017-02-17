@@ -81,9 +81,6 @@ for testdir in *; do
 				fi
 				;;
 				
-				*)
-				  errors=$((errors+1))
-				  printError "Wrong typeOfCase $typeOfCase"
 			esac;
 			
 			for i in "${languages[@]}"; do
