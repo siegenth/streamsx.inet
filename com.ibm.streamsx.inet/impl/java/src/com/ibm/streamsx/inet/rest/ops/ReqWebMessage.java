@@ -90,7 +90,6 @@ public class ReqWebMessage {
 			stream.forEach(item -> readerSb.append(item));
 			stream.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.err.println("Error reading request of context path : " + contextPath);
 			e.printStackTrace();
 		}

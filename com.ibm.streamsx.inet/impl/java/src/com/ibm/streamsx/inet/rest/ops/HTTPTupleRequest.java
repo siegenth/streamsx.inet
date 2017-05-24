@@ -309,19 +309,19 @@ public class HTTPTupleRequest extends AbstractOperator implements ReqHandlerInte
 		}
 		}
 		if (jsonFormatInPort) {
+			trace.info(String.format(" -- Single Column Output  JSON "));
 			Logger.getLogger(this.getClass()).trace("Operator " + context.getName() + " single column input ");
 		} else {
-		// key, in port
+			trace.info(String.format(" -- MultieColumn Output  TUPLE "));			
+			// key, in port
 			if (getOutput(0).getStreamSchema().getAttribute(keyAttributeName) == null) {
 				throw new Exception("Could not detect the data field for output port 0. "
-					+ "Specify a valid value for \"keyAttributeName\"");
+						+ "Specify a valid value for \"keyAttributeName\"");
 		}
-		MetaType keyResponseParamType = getOutput(0).getStreamSchema().getAttribute(keyAttributeName)
-				.getType().getMetaType();
+		MetaType keyResponseParamType = getOutput(0).getStreamSchema().getAttribute(keyAttributeName).getType().getMetaType();
 		if (keyResponseParamType != MetaType.INT64)
 			throw new Exception(
 					"Only types \"" + MetaType.INT64 + "\" allowed for param " + keyAttributeName + "\"");
-		
 		// response, in port
 		if (getInput(0).getStreamSchema().getAttribute(responseHeaderAttributeName) == null) {
 			responseHeaderAttributeName = null;
